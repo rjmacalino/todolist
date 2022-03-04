@@ -17,27 +17,24 @@
         data: function () {
             return {
                 item: {
-                    name: ""
-                }
+                    "name" : "",
+                    "completed" : 0,
+                    "completed_at" : null
+                },
             }
         },
         methods: {
             addItem() {
-                if( this.item.name == '') {
-                    return;
-                }
-                axios.post('api/item/store', {
-                    item: this.item
-                })
+                axios.post('api/item/store', this.item)
                 .then( response => {
-                    if( response.status == 201) {
-                        this.item.name == "";
-                    }
+                    this.$emit('update-list', {})
                 })
                 .catch( error => {
                     console.log (error);
                 })
             }
+
+            
         }
 
     }
