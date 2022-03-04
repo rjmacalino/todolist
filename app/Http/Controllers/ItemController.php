@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Http\Requests\ItemRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
 class ItemController extends Controller
 {
