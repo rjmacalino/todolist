@@ -16,7 +16,7 @@ class ItemController extends Controller
     }
     public function index()
     {
-        return $this->item->orderBy('created_at', 'DESC')->get();
+        return $this->item->all()->latest();
     }
 
     public function store(ItemRequest $request)
