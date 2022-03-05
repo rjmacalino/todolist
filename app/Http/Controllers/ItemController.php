@@ -16,7 +16,7 @@ class ItemController extends Controller
     }
     public function index()
     {
-        return $this->item->all()->latest();
+        return $this->item->latest()->get();
     }
 
     public function store(ItemRequest $request)
