@@ -13,7 +13,7 @@ import { faPlusSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 //imports components
-import Todo from './components/app';
+import Todo from './components/Item/app';
 
 library.add(faPlusSquare, faTrash)
 
@@ -29,7 +29,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-
+//components
 Vue.component('app-component', Todo);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
