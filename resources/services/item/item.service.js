@@ -1,30 +1,24 @@
 import axios from "axios";
-var promise;
 
 export default class ItemService {
 
     list() {
-        promise = axios.get(`api/items`);
-        return promise;
+        return axios.get(`api/items`);
     }
 
     store(data) {
-        promise = axios.post(`api/items`, data);
-        return promise;
+        return axios.post(`api/items`, data);
     }
 
     update(id, data) {
-        promise = axios.put(`api/items/${id}`, data);
-        return promise;
+        return axios.put(`api/items/${id}`, data);
     }
 
     show(id) {
-        promise = axios.get(`api/items/${id}`);
-        return promise;
+        return axios.get(`api/items/${id}`);
     }
 
     delete(id) {
-        promise = axios.delete(`api/items/${id}`);
-        return promise;
+        return axios.delete(`api/items/${id}`);
     }
 }
