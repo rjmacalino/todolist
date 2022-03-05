@@ -1,0 +1,69 @@
+.todoListContainer {
+
+    width: 350px;
+    margin: auto;
+
+}
+
+.heading {
+    background: #e6e6e6;
+    padding: 10px;
+}
+
+#title {
+    text-align: center;
+}
+.completed {
+
+    text-decoration: line-through;
+    color: #999999;
+    
+}
+
+.itemText {
+    width: 100%;
+    margin-left: 20px;
+
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trashcan {
+    background: #e6e6e6;
+    border: none;
+    color: #FF0000;
+    outline: none;
+}
+.itemList {
+    background: #e6e6e6;
+    padding: 5px;
+    margin-top: 5px;
+
+}
+
+.addItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    background: #f7f7f7;
+    border: 0px;
+    outline: none;
+    padding: 5px;
+    margin-right: 10px;
+    width: 100%;
+}
+.plus {
+    font-size: 20px;
+}
+.active {
+    color: #00CE25;
+}
+.inactive {
+    color: #999999;
+}

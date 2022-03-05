@@ -3,56 +3,46 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use App\Http\Requests\ItemRequest;
 
 class ItemController extends Controller
 {
 
+    protected $item;
+
+    public function __construct(Item $item)
+    {
+        $this->item = $item;
+    }
     public function index()
     {
-        return Item::orderBy('created_at', 'DESC')->get();
+        return $this->item->latest()->get();
+    }
+
+    public function store(ItemRequest $request)
+    {
+        return $this->item->create($request->validated());
     }
 
 
-    public function store(Request $request)
+    public function update(ItemRequest $request, $id)
     {
-        $newItem = new Item;
-        $newItem->name = $request->item['name'];
-        $newItem->save(); 
+        if (!$this->checkIfExist($id)) return "Item not found.";
 
-        return $newItem;
+        return $this->item->find($id)->fill($request->validated())->save();
     }
-
-
-    public function update(Request $request, $id)
-    {
-        $existingItem = Item::find( $id );
-            
-            if ($existingItem) {
-                $existingItem->completed = $request->item['completed'] ? true : false;
-                // if item is 'completed' set 'completed' to true else false;
-                $existingItem->completed_at = $request->item['completed'] ? Carbon::now() : null;
-                // same as above, but we will update the completed_at with the current date and time using 'carbon'
-                // do not forget to declare it at the top, use Illuminate\Support\Carbon;
-                $existingItem->save();
-                return $existingItem;
-                
-            }
-                // if for some reason there is no existing item with that $id
-                return "Item not found.";
-    }   
 
 
     public function destroy($id)
     {
-        $existingItem = Item::find ($id);
+        if (!$this->checkIfExist($id)) return "Item not found.";
+        $this->item->whereId($id)->delete();
+        return $this->index();
+    }
 
-        if($existingItem) {
-            $existingItem->delete();
-            return "item has been deleted.";
-        }
-
-        return "Item not found.";
+    private function checkIfExist($id)
+    {
+        $item = $this->item->find($id);
+        return !$item ? false : true;
     }
 }

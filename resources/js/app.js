@@ -12,6 +12,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlusSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+//imports components
+import Todo from './components/Item/app';
+
 library.add(faPlusSquare, faTrash)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -26,11 +29,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-
-Vue.component('app-component', require('./components/app.vue').default);
+//components
+Vue.component('app-component', Todo);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
